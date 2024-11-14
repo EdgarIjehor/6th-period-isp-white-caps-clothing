@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
-
-    
-}
 * {
     margin: 0;
     padding: 0;
@@ -117,6 +114,14 @@ body, html {
 
 /* Container for video and text */
 .video-background {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.cap {
+  padding: 10px;
   position: relative;
   width: 100%;
   height: 100vh;
