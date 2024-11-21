@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -300,4 +299,32 @@ li.dropdown {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+html { 
+  overflow-y: scroll; 
+}
+html, body { 
+  margin: 0; 
+  height: 100%; 
+} 
+
+.fullscreen-div {  
+  overflow: auto; 
+  background-color: #f0f0f0; 
+  padding: 20px; 
+  box-sizing: border-box; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+} 
+
+.navi {
+  position: center;
+  margin-top: 40px;
 }
