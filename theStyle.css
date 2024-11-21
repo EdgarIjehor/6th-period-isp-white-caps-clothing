@@ -320,3 +320,9 @@ html, body {
   position: center;
   margin-top: 40px;
 }
+
+.aboutBody {
+  margin: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
