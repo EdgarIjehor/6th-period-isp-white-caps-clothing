@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="theStyle.css">
+  <script>
+    function addToCart(item, price) {
+      const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+      cart.push({ item, price });
+      localStorage.setItem('shoppingCart', JSON.stringify(cart));
+      alert(`${item} added to cart.`);
+    }
+  </script>
   <title>Product Page</title>
 </head>
 <h1 class="slogan">
@@ -62,7 +70,7 @@
         <button class="size">M</button>
         <button class="size">L</button>
       </div>
-      <button class="add-to-cart">Add to Cart</button>
+      <button onclick="addToCart('Banana', 0.75)">Add to Cart</button>
     </div>
   </div>
   <script src="script.js"></script>
