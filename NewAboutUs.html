@@ -45,9 +45,16 @@
           </a>
         </li>
         <li>
-          <a href="ShoppingCart.html" class="cta">
-            <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px">
-          </a>
+          <button onclick="openSearch()" class="cts">
+              <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px">
+            </button>
+          </li>
+          <div class="search-overlay" id="searchOverlay">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search..." oninput="searchItems()">
+                <ul class="suggestions" id="suggestions"></ul>
+                <button class="close-btn" onclick="closeSearch()">Close</button>
+            </div> 
         </li>
       
       
@@ -235,14 +242,15 @@
           Rehan's Story
         </h2>
         <p class="aboutparagraph"> 
-          Hi. It's Nathan, from White Caps.
+          Whats good gng, its Rehan Saneesh
         </p>
         <br>
       </center>
         <p class="aboutparagraph"> 
-          One day I was getting ready for school during sophomore year, but then I realized one thing: I didn't like how I looked.
-          Growing up, I mostly wore hand-me-downs from my siblings or cheap clothes that didn't feel like "me". In my childhood environment, 
-          I was taught that spending money on clothes wasn't practical and that it wouldn't bring lasting happiness.
+          Once, I was on vacation in India to meet up with my family. We went to the beaches there, the beautiful black sand beaches,
+          but it was littered with something truly disgusting to behold. Schools upon schools of dead fish lay dormant on the beach,
+          a result of all the pollution that the oceans around India suffer. After some years, me and my partner Nathan hope to make a
+          meaningful impact to such a gargantuan cause: cleaning the oceans.
         </p>
 
 

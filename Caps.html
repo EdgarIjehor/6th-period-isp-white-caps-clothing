@@ -37,9 +37,16 @@
           </a>
         </li>
         <li>
-          <a href="ShoppingCart.html" class="cta">
-            <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px">
-          </a>
+          <button onclick="openSearch()" class="cts">
+              <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px">
+            </button>
+          </li>
+          <div class="search-overlay" id="searchOverlay">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search..." oninput="searchItems()">
+                <ul class="suggestions" id="suggestions"></ul>
+                <button class="close-btn" onclick="closeSearch()">Close</button>
+            </div> 
         </li>
       
       
