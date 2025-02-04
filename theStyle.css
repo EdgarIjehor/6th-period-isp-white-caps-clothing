@@ -1260,3 +1260,9 @@ span.price {
   cursor: pointer;
   border-radius: 4px;
 }
+.nolookie {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
