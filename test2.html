@@ -1,81 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apple Pay Integration</title>
-  <script src="https://js.stripe.com/v3/"></script>
-  <style>
-    #apple-pay-button {
-      display: none; /* Hidden by default, shown only if Apple Pay is available */
-      background-color: black;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlay Search Bar with Page Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .search-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            width: 300px;
+        }
+
+        .search-box input {
+            width: 92%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .suggestions {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background: white;
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            right: 20px;
+            display: none;
+        }
+
+        .suggestions li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .suggestions li:hover {
+            background: #f0f0f0;
+        }
+
+        .close-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Checkout</h1>
-  <p>Total: $10.00</p>
-  <button id="apple-pay-button">Pay with Apple Pay</button>
 
-  <script>
-    // Initialize Stripe with your publishable key
-    const stripe = Stripe('your-publishable-key-here'); // Replace with your Stripe publishable key
+    <button onclick="openSearch()">Open Search</button>
 
-    // Create a PaymentRequest object
-    const paymentRequest = stripe.paymentRequest({
-      country: 'US',
-      currency: 'usd',
-      total: {
-        label: 'Total',
-        amount: 1000, // Amount in cents ($10.00)
-      },
-      requestPayerName: true,
-      requestPayerEmail: true,
-    });
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search..." oninput="searchItems()">
+            <ul class="suggestions" id="suggestions"></ul>
+            <button class="close-btn" onclick="closeSearch()">Close</button>
+        </div>
+    </div>
 
-    // Check if Apple Pay is available
-    paymentRequest.canMakePayment().then(result => {
-      if (result && result.applePay) {
-        // Show the Apple Pay button
-        document.getElementById('apple-pay-button').style.display = 'block';
-      }
-    });
+    <script>
+        const pages = {
+            "Apple": "apple.html",
+            "Banana": "banana.html",
+            "Cherry": "cherry.html",
+            "Date": "date.html",
+            "Eggplant": "eggplant.html",
+            "Fig": "fig.html",
+            "Grapes": "grapes.html",
+            "Honeydew": "honeydew.html",
+            "Kiwi": "kiwi.html",
+            "Lemon": "lemon.html",
+            "Mango": "mango.html",
+            "Orange": "orange.html",
+            "Papaya": "papaya.html",
+            "Strawberry": "strawberry.html",
+            "Tomato": "tomato.html",
+            "Watermelon": "watermelon.html"
+        };
 
-    // Handle Apple Pay button click
-    const applePayButton = document.getElementById('apple-pay-button');
-    applePayButton.addEventListener('click', () => {
-      paymentRequest.show().then(result => {
-        // Handle the payment result
-        if (result.error) {
-          alert(result.error.message);
-        } else {
-          // Send the payment token to your server for processing
-          fetch('/charge', { // Replace with your server endpoint
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ token: result.token.id }),
-          })
-          .then(response => response.json())
-          .then(data => {
-            if (data.success) {
-              alert('Payment successful!');
-            } else {
-              alert('Payment failed. Please try again.');
-            }
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
+        function openSearch() {
+            document.getElementById('searchOverlay').style.display = 'flex';
+            document.getElementById('searchInput').focus();
         }
-      });
-    });
-  </script>
+
+        function closeSearch() {
+            document.getElementById('searchOverlay').style.display = 'none';
+            document.getElementById('suggestions').style.display = 'none';
+        }
+
+        function searchItems() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let suggestions = document.getElementById('suggestions');
+            suggestions.innerHTML = '';
+
+            if (input === '') {
+                suggestions.style.display = 'none';
+                return;
+            }
+
+            let matches = Object.keys(pages).filter(item => item.toLowerCase().includes(input));
+
+            if (matches.length === 0) {
+                suggestions.style.display = 'none';
+                return;
+            }
+
+            matches.forEach(item => {
+                let li = document.createElement('li');
+                li.textContent = item;
+                li.onclick = () => {
+                    window.location.href = pages[item];
+                };
+                suggestions.appendChild(li);
+            });
+
+            suggestions.style.display = 'block';
+        }
+    </script>
+
 </body>
 </html>

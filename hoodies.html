@@ -4,14 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="theStyle.css">
-  <script>
-    function addToCart(item, price) {
-      const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-      cart.push({ item, price });
-      localStorage.setItem('shoppingCart', JSON.stringify(cart));
-      alert(`${item} added to cart.`);
-    }
-  </script>
+  <script src="script.js"></script>
   <title>Hats Layout</title>
 </head>
 
@@ -44,9 +37,16 @@
             </a>
           </li>
           <li>
-            <a href="ShoppingCart.html" class="cta">
+            <button onclick="openSearch()" class="cts">
               <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px">
-            </a>
+            </button>
+          </li>
+          <div class="search-overlay" id="searchOverlay">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search..." oninput="searchItems()">
+                <ul class="suggestions" id="suggestions"></ul>
+                <button class="close-btn" onclick="closeSearch()">Close</button>
+            </div> 
           </li>
         
         
@@ -70,7 +70,7 @@
               </a>
               
               <div class="cap-label" style="color:black;">
-                Organic Cotton Cap
+                Hoodie
               </div>
               <div>
                 <p style="font-family: 'Major Mono Display', serif; font-weight: bolder;font-size: medium; color: black;">$30.00</p>
@@ -85,7 +85,7 @@
               </a>
               
               <div class="cap-label" style="color:black;">
-                Organic Cotton Cap
+                Hoodie
               </div>
               <div>
                 <p style="font-family: 'Major Mono Display', serif; font-weight: bolder;font-size: medium; color: black;">$30.00</p>
@@ -100,7 +100,7 @@
               </a>
               
               <div class="cap-label" style="color:black;">
-                Organic Cotton Cap
+                Hoodie
               </div>
               <div>
                 <p style="font-family: 'Major Mono Display', serif; font-weight: bolder;font-size: medium; color: black;">$30.00</p>
@@ -115,7 +115,7 @@
               </a>
               
               <div class="cap-label" style="color:black;">
-                Organic Cotton Cap
+                Hoodie
               </div>
               <div>
                 <p style="font-family: 'Major Mono Display', serif; font-weight: bolder;font-size: medium; color: black;">$30.00</p>
