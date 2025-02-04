@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Pay Integration</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    #apple-pay-button {
+      display: none; /* Hidden by default, shown only if Apple Pay is available */
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Checkout</h1>
+  <p>Total: $10.00</p>
+  <button id="apple-pay-button">Pay with Apple Pay</button>
+
+  <script>
+    // Initialize Stripe with your publishable key
+    const stripe = Stripe('your-publishable-key-here'); // Replace with your Stripe publishable key
+
+    // Create a PaymentRequest object
+    const paymentRequest = stripe.paymentRequest({
+      country: 'US',
+      currency: 'usd',
+      total: {
+        label: 'Total',
+        amount: 1000, // Amount in cents ($10.00)
+      },
+      requestPayerName: true,
+      requestPayerEmail: true,
+    });
+
+    // Check if Apple Pay is available
+    paymentRequest.canMakePayment().then(result => {
+      if (result && result.applePay) {
+        // Show the Apple Pay button
+        document.getElementById('apple-pay-button').style.display = 'block';
+      }
+    });
+
+    // Handle Apple Pay button click
+    const applePayButton = document.getElementById('apple-pay-button');
+    applePayButton.addEventListener('click', () => {
+      paymentRequest.show().then(result => {
+        // Handle the payment result
+        if (result.error) {
+          alert(result.error.message);
+        } else {
+          // Send the payment token to your server for processing
+          fetch('/charge', { // Replace with your server endpoint
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ token: result.token.id }),
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              alert('Payment successful!');
+            } else {
+              alert('Payment failed. Please try again.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
