@@ -4,14 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="theStyle.css">
-  <script>
-    function addToCart(item, price) {
-      const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-      cart.push({ item, price });
-      localStorage.setItem('shoppingCart', JSON.stringify(cart));
-      alert(`${item} added to cart.`);
-    }
-  </script>
+  <script src="script.js"></script>
   <title>Product Page</title>
 </head>
 <h1 class="slogan">
@@ -36,14 +29,21 @@
         </a>
       </li>
       <li>
-        <a href="ShoppingCart.html" class="cta">
+        <a href="Cart.html" class="cta">
           <img src="White Caps Images/cart.png" alt="cart" height="35px" width="35px">
         </a>
       </li>
       <li>
-        <a href="Cart.html" class="cta">
-          <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px">
-        </a>
+        <button onclick="openSearch()" class="cts">
+              <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px">
+            </button>
+          </li>
+          <div class="search-overlay" id="searchOverlay">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search..." oninput="searchItems()">
+                <ul class="suggestions" id="suggestions"></ul>
+                <button class="close-btn" onclick="closeSearch()">Close</button>
+            </div> 
       </li>
     
     
