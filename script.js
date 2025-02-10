@@ -77,3 +77,27 @@ function searchItems() {
 
   suggestions.style.display = 'block';
 }
+document.addEventListener('DOMContentLoaded', function() {
+  var centerImage = document.getElementById('center-image');
+  var navbar = document.getElementById('navbar');
+  var footer = document.getElementById('footer');
+
+  // Show the center image after 1.5 seconds with a left-to-right transition
+  setTimeout(function() {
+      centerImage.classList.remove('hidden');
+      centerImage.style.width = '300px'; // Expand the width
+      centerImage.style.opacity = '1'; // Fade in the image
+  }, 1500); // 1.5-second delay
+
+  // Show the navbar and footer after 3 seconds
+  setTimeout(function() {
+      navbar.classList.remove('hidden');
+      footer.classList.remove('hidden');
+
+      // Trigger the sliding animations
+      setTimeout(function() {
+          navbar.style.top = '0'; // Slide navbar down
+          footer.style.bottom = '0'; // Slide footer up
+      }, 10); // Small delay to ensure the elements are visible before animating
+  }, 3000); // 3-second delay
+});
