@@ -1348,3 +1348,29 @@ span.price {
     
 
 }
+
+/* Cart Styling */
+
+.cart-container{
+  display: flex;
+  align-self: flex-end;
+  width: 30%;
+  margin: 5% 5%;
+}
+
+.cart-container button{
+    border-radius: 5%;
+    width: 100%;
+    height: 60px;
+    background-color: #000;
+    color: #ddd;
+    font-family: 'Raleway', sans-serif;
+    margin: 2% 2%;
+}
+
+.Order{
+  background-color: rgb(231, 231, 231);
+  font-family: 'DM Sans', sans-serif;
+  text-align: left;
+  padding: 3% 3%;
+}

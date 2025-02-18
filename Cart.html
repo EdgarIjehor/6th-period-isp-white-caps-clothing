@@ -8,6 +8,8 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script>
+
+          
           function loadCart() {
             const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
             const cartContainer = document.getElementById('cart');
@@ -73,13 +75,18 @@
     </ul>
     </header>
   <body onload="loadCart()"> 
+    <div class="cart-container" >
     <center>
-      <h1>Your Cart</h1>
+      <div class="Order">
+      <h1>Order Summary</h1>
       <div id="cart"></div>
       <h2 id="total"></h2>
+      </div>
       <button onclick="clearCart()">Clear Cart</button>
+      <br>
       <button class="paybut" onclick="window.location.href='paymentScrn.html'">Continue to Payment</a>
     </center>
+  </div>
   <footer>
     <div class="footerContainer">
       <div class="socialIcons">

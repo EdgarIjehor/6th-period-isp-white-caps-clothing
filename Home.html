@@ -40,6 +40,19 @@
           </a>
         </li>
 
+        <li>
+          <button onclick="openSearch()" class="cts">
+              <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px">
+            </button>
+        
+          <div class="search-overlay" id="searchOverlay">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search..." oninput="searchItems()">
+                <ul class="suggestions" id="suggestions"></ul>
+                <button class="close-btn" onclick="closeSearch()">Close</button>
+            </div> 
+        </li>
+
       
       
     </ul>
@@ -77,6 +90,8 @@
                     <li><a href="WebsiteDesign.html">Home</a></li>
                     <li><a href="NewAboutUs.html">About Us</a></li>
                     <li><a href="">Contact Information</a></li>
+                  
+                  
                   </ul>
               </div>
               
