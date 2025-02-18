@@ -1335,10 +1335,11 @@ span.price {
 }
 
 .how-it-works{
-  margin-top: 1%;
+  
   
     padding-top: 1%;
-    padding-bottom: 1%;
+    padding-bottom: 3%;
+    padding-left: 2%;
     background-color: rgba(0, 0, 0, 0.3);
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
@@ -1373,4 +1374,14 @@ span.price {
   font-family: 'DM Sans', sans-serif;
   text-align: left;
   padding: 3% 3%;
+}
+
+.aboutstory-video{
+  display: flex;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  border-radius: 5%;
 }
