@@ -1353,7 +1353,7 @@ span.price {
 
 .cart-container{
   display: flex;
-  align-self: flex-end;
+  align-self: right;
   width: 30%;
   margin: 5% 5%;
 }

@@ -7,35 +7,48 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script>
+      
+          <script>
 
-          
+
+         
           function loadCart() {
+
+
             const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
             const cartContainer = document.getElementById('cart');
+           
+           
             let total = 0;
-      
+     
             if (cart.length === 0) {
               cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+
+
               return;
             }
-      
+     
             cart.forEach((item, index) => {
               total += item.price;
               const itemElement = document.createElement('div');
               itemElement.textContent = `${index + 1}. ${item.item} - $${item.price.toFixed(2)}`;
               cartContainer.appendChild(itemElement);
             });
-      
+     
             document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
           }
-      
+
+
+     
+     
           function clearCart() {
             localStorage.removeItem('shoppingCart');
             alert('Cart cleared!');
             location.reload();
           }
         </script>
+
+
         <title>White Caps Clothing</title>
     </head>
     <h1 class="slogan">
@@ -74,17 +87,21 @@
       
     </ul>
     </header>
+    
   <body onload="loadCart()"> 
+    <h1 style="font-family: 'Raleway', sans-serif; font-weight: 400; font-style: normal; margin: 2% 2%;">Shopping Cart  </h1>
     <div class="cart-container" >
+      
+      
     <center>
       <div class="Order">
       <h1>Order Summary</h1>
       <div id="cart"></div>
       <h2 id="total"></h2>
       </div>
-      <button onclick="clearCart()">Clear Cart</button>
+      <button onclick="clearCart()" id="clearCartbtn">Clear Cart</button>
       <br>
-      <button class="paybut" onclick="window.location.href='paymentScrn.html'">Continue to Payment</a>
+      <button class="paybut" onclick="window.location.href='paymentScrn.html'" id="checkoutbtn">Checkout</a>
     </center>
   </div>
   <footer>
