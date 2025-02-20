@@ -101,3 +101,25 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 10); // Small delay to ensure the elements are visible before animating
   }, 3000); // 3-second delay
 });
+
+
+function displayTotalPrice() {
+  const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  
+  document.getElementById('total-price').textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+  window.onload = displayTotalPrice;
+}
+
+function clearCart() {
+  localStorage.removeItem('shoppingCart'); 
+  displayTotalPrice(); 
+  alert("Cart has been cleared!");
+}
+
+function getPrices() {
+  const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+  return cart.map(item => ({ item: item.item, price: item.price }));
+}
+
+
