@@ -3,112 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Background with Smooth Image Transition</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-        }
-
-        #video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Place the video behind other content */
-        }
-
-        #intro-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        #center-image {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Center the image */
-            max-width: 300px; /* Adjust the size of the image */
-            width: 0; /* Start with no width */
-            opacity: 0; /* Start fully transparent */
-            transition: top 0.5s ease-in-out; /* Smooth transition */
-        }
-
-        #navbar {
-            position: fixed;
-            top: -60px; /* Start off-screen */
-            left: 0;
-            width: 100%;
-            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 100;
-            transition: top 0.5s ease-in-out;
-        }
-
-        #navbar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        #navbar ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        #navbar ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        #footer {
-            position: fixed;
-            bottom: -60px; /* Start off-screen */
-            left: 0;
-            width: 100%;
-            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            z-index: 100;
-            transition: bottom 0.5s ease-in-out;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <title>Shopping Cart</title>
 </head>
 <body>
-    <div id="video-container">
-        <video id="intro-video" autoplay muted loop>
-            <source src="White Caps Videos/ocean.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <img id="center-image" src="White Caps Images/logo.png" alt="Center Image" class="hidden">
-    </div>
 
-    <nav id="navbar" class="hidden">
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+    <h1 id="total-price">Total Price: $0.00</h1>
+    <button onclick="displayTotalPrice()">Show Total Price</button>
+    <button onclick="clearCart()">Clear Cart</button>
 
-    <footer id="footer" class="hidden">
-        <p>&copy; 2023 Your Company. All rights reserved.</p>
-    </footer>
+    <script>
+        function displayTotalPrice() {
+            const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+            
+            document.getElementById('total-price').textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+        }
 
-    <script src="script.js"></script>
+        function clearCart() {
+            localStorage.removeItem('shoppingCart'); // Remove cart data
+            displayTotalPrice(); // Update display to reflect empty cart
+            alert("Cart has been cleared!");
+        }
+
+        // Call function when page loads to display correct total
+        window.onload = displayTotalPrice;
+    </script>
+
 </body>
 </html>
