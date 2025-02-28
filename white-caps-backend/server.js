@@ -1,5 +1,9 @@
+// Imports modules
+
 const express = require('express');
+//Allows interaction with the sql database
 const mysql = require('mysql2');
+//Needed to parse JSON requests
 const bodyParser = require('body-parser');
 
 const app = express();
