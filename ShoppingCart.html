@@ -8,7 +8,7 @@
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <title>White Caps Clothing</title>
-        <script src="script.js"></script>
+        
     </head>
     <h1 class="slogan">
       Wear the Change, Make a Difference.
@@ -66,64 +66,44 @@
 
           <label for="items">Items Ordered:</label>
           <input type="text" id="items" name="items" required><br><br>
-
+          
           <h1 id="total-price">Total Price: $0.00</h1>
-          <button onclick="clearCart()">Clear Cart</button>
-          <script>
-            function displayTotalPrice() {
-              const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-              const totalPrice = cart.reduce((total, item) => total + item.price, 0);
-              
-              document.getElementById('total-price').textContent = `Total Price: $${totalPrice.toFixed(2)}`;
-              
-            }
-
-            function clearCart() {
-              localStorage.removeItem('shoppingCart'); 
-              displayTotalPrice(); 
-              alert("Cart has been cleared!");
-            }
-
-            function getPrices() {
-              const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-              return cart.map(item => ({ item: item.item, price: item.price }));
-            }
-            window.onload = displayTotalPrice;
-          </script>
           
           <button type="submit">Submit Order</button>
+          
       </form>
-      
       <script>
         document.getElementById('orderForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const formData = {
-                name: document.getElementById('name').value,
-                address: document.getElementById('address').value,
-                items: document.getElementById('items').value,
-                totalPrice: document.getElementById('totalPrice').value
-            };
-
-            fetch('https://script.google.com/macros/s/AKfycbz3GMNqHjvM2dwXj_be4zXKKdKkuNZbUylftrgDF_NJW729KtsIJ3Mti-duimxuWpTm/exec', {
-                method: 'POST',
-                body: JSON.stringify(formData),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                mode: 'no-cors' 
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Order submitted successfully!');
-                document.getElementById('orderForm').reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Order Submitted!");
-            });
-        });
-    </script>
+              event.preventDefault();
+  
+              const formData = {
+                  name: document.getElementById('name').value,
+                  address: document.getElementById('address').value,
+                  items: document.getElementById('items').value,
+                  totalPrice: document.getElementById('totalPrice').value
+              };
+  
+              fetch('https://script.google.com/macros/s/AKfycbz3GMNqHjvM2dwXj_be4zXKKdKkuNZbUylftrgDF_NJW729KtsIJ3Mti-duimxuWpTm/exec', {
+                  method: 'POST',
+                  body: JSON.stringify(formData),
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  mode: 'no-cors' 
+              })
+              .then(response => response.json())
+              .then(data => {
+                  alert('Order submitted successfully!');
+                  document.getElementById('orderForm').reset();
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+                  alert("Order Submitted!");
+              });
+          });
+        
+      </script>
+      
     </center>
   </div>
   <footer>
