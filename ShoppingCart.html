@@ -54,7 +54,8 @@
   <body> 
     <h1 style="font-family: 'Raleway', sans-serif; font-weight: 400; font-style: normal; margin: 2% 2%;">Shopping Cart  </h1>
     <div class="cart-container" >
-      
+      <div class="grid-container">
+        <div class="grid-item">
     <center>
       <h1>Order Form</h1>
       <form id="orderForm">
@@ -65,9 +66,38 @@
           <input type="text" id="address" name="address" required><br><br>
 
           <label for="items">Items Ordered:</label>
-          <input type="text" id="items" name="items" required><br><br>
           
+          <br><br>
+          
+         
           <h1 id="total-price">Total Price: $0.00</h1>
+
+    <button onclick="clearCart()">Clear Cart</button>
+        <script>
+          function displayOrder(){
+            const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            
+            document.getElementById('items').textContent = $${totalPrice.toFixed(2)};
+          }
+        </script>
+    <script>
+        function displayTotalPrice() {
+            const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+            
+            document.getElementById('total-price').textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+        }
+
+        function clearCart() {
+            localStorage.removeItem('shoppingCart'); // Remove cart data
+            displayTotalPrice(); // Update display to reflect empty cart
+            alert("Cart has been cleared!");
+        }
+
+        // Call function when page loads to display correct total
+        window.onload = displayTotalPrice;
+    </script>
+
           
           <button type="submit">Submit Order</button>
           
@@ -105,6 +135,8 @@
       </script>
       
     </center>
+  </div>
+  </div>
   </div>
   <footer>
     <div class="footerContainer">

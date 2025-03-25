@@ -948,6 +948,13 @@ span.price {
 
 }
 
+.item-paragraph{
+  font-family: 'Winky Sans', sans-serif;
+  text-shadow: #0088a9;
+  text-align: center;
+
+}
+
 .product-card {
   position: relative;
   width: 30%;
@@ -1205,7 +1212,14 @@ span.price {
 }
 
 .product-details {
-  margin-left: 20px;
+
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  justify-self: center;
+  align-self: center;
 }
 
 .color-options, .size-options {
@@ -1227,9 +1241,16 @@ span.price {
   border-color: #000;
 }
 
+.addtocart{
+  border-radius: 5%;
+   color: white;
+    background-color: black; 
+    font-family: DM Sans;
+ width: 80%; padding: 1% 8%; margin-top: 2%;
+}
+
 .size {
-  display: flex;
-  align-self: center;
+
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
