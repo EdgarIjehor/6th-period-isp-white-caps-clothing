@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Antonio:wght@100..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playwrite+AU+SA:wght@100..400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Antonio:wght@100..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Major+Mono+Display&family=Outfit:wght@100..900&family=Playwrite+AU+SA:wght@100..400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Antonio:wght@100..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Major+Mono+Display&family=Outfit:wght@100..900&family=Playwrite+AU+SA:wght@100..400&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-    
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Antonio:wght@100..700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Major+Mono+Display&family=Outfit:wght@100..900&family=Playwrite+AU+SA:wght@100..400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap'); 
 *{
   padding:0;
   margin:0;
@@ -935,9 +935,17 @@ span.price {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  justify-content: center;
   min-height: 80vh;
   background-color: white;
   gap: 4%;
+}
+
+.clothes-paragraph{
+  font-family: 'Winky Sans', sans-serif;
+  text-shadow: #0088a9;
+  text-align: left;
+
 }
 
 .product-card {
@@ -1095,7 +1103,7 @@ span.price {
 
 .star-item {
   flex: 1 1 calc(25% - 20px); /* Four items per row with gap adjustment */
-  max-width: calc(25% - 20px);
+  max-width: 80%;
   text-align: left;
   background: #fff;
   border: 1% solid #ddd;
@@ -1220,6 +1228,8 @@ span.price {
 }
 
 .size {
+  display: flex;
+  align-self: center;
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
