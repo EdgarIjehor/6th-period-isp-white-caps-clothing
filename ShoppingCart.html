@@ -8,6 +8,55 @@
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
     crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>White Caps Clothing</title>
+    <style>
+        .cart-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .orderForm {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .cart-summary {
+            flex: 1;
+            max-width: 400px;
+            padding: 20px;
+            border-left: 2px solid #ddd;
+            height: 100%;
+            position: absolute;
+            right: 600px;
+            top: 300px;
+            width: 300px;
+        }
+
+        #items {
+            text-align: left;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        #total-price {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1 class="slogan">
@@ -40,56 +89,65 @@
     <div>
         <h1 style="font-family: 'Raleway', sans-serif; font-weight: 400; font-style: normal; margin: 2% 2%;">Shopping Cart</h1>
         <div class="cart-container">
-           
-                <div class="grid-item">
-                <div class="orderForm">
-                    <center>
-                        <h1>Order Form</h1>
-                        <form id="orderForm">
-                            <label for="name">Name:</label>
-                            <input type="text" id="name" name="name" required><br><br>
+            <div class="orderForm">
+                <center>
+                    <h1>Order Form</h1>
+                    <form id="orderForm">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required><br><br>
 
-                            <label for="address">Address:</label>
-                            <input type="text" id="address" name="address" required><br><br>
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required><br><br>
 
-                            <label for="phonenumber">Phone Number:</label>
-                            <input type="text" id="phonenumber" name="phonenumber" required><br><br>
+                        <label for="phonenumber">Phone Number:</label>
+                        <input type="text" id="phonenumber" name="phonenumber" required><br><br>
 
-                            <label for="items">Items Ordered:</label>
-                            <div id="items"></div> <!-- Items will be displayed here -->
+                        <h1 id="total-price">Total Price: $0.00</h1>
 
-                            <br><br>
+                        <br><br>
 
-                            <h1 id="total-price">Total Price: $0.00</h1>
+                        <button type="button" onclick="clearCart()">Clear Cart</button>
+                        <button type="submit">Submit Order</button>
+                    </form>
+                </center>
+            </div>
 
-                            <button type="button" onclick="clearCart()">Clear Cart</button>
-                            <button type="submit">Submit Order</button>
-                        </form>
-                    </center>
-                    </div>
-                </div>
+            <!-- Cart summary to the right -->
+            <div class="cart-summary">
+                <h2>Items in Cart</h2>
+                <div id="items"></div>
             </div>
         </div>
-    
+    </div>
 
     <script>
         // Display items in the cart
         function displayOrder() {
-  const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-  const itemsContainer = document.getElementById('items');
+            const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+            const itemsContainer = document.getElementById('items');
 
-  itemsContainer.innerHTML = ""; // Clear previous content
+            itemsContainer.innerHTML = ""; // Clear previous content
 
-  if (cart.length === 0) {
-    itemsContainer.innerHTML = "<p>No items in cart.</p>";
-  } else {
-    cart.forEach(item => {
-      const itemElement = document.createElement('p');
-      itemElement.textContent = `${item.item} - Size: ${item.size} - $${item.price.toFixed(2)}`;
-      itemsContainer.appendChild(itemElement);
-    });
-  }
-}
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = "<p>No items in cart.</p>";
+            } else {
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item');
+
+                    const itemImage = document.createElement('img');
+                    itemImage.src = ("White Caps Images/White Caps Clothes/" + item.item + ".jpg");
+                    itemImage.alt = item.item;
+
+                    const itemDetails = document.createElement('p');
+                    itemDetails.textContent = `${item.item} - Size: ${item.size} - $${item.price.toFixed(2)}`;
+
+                    itemElement.appendChild(itemImage);
+                    itemElement.appendChild(itemDetails);
+                    itemsContainer.appendChild(itemElement);
+                });
+            }
+        }
 
         // Display total price
         function displayTotalPrice() {
