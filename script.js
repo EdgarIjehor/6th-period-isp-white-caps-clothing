@@ -24,11 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   
+
+
 function addToCart(item, price) {
+  // Get the selected size
+  const selectedSize = document.querySelector('.size.selected')?.textContent;
+  
+  if (!selectedSize) {
+    alert("Please select a size before adding to cart.");
+    return;
+  }
+
   const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
-  cart.push({ item, price });
+  cart.push({ item, price, size: selectedSize });
   localStorage.setItem('shoppingCart', JSON.stringify(cart));
-  alert(`${item} added to cart.`);
+  alert(`${item} (Size: ${selectedSize}) added to cart.`);
 }
 const pages = {
   "Apple": "apple.html",

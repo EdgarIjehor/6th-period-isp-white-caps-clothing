@@ -947,7 +947,10 @@ span.price {
   text-align: left;
 
 }
-
+.orderForm{
+  font-family: 'DM Sans';
+  
+}
 .item-paragraph{
   font-family: 'Winky Sans', sans-serif;
   text-shadow: #0088a9;
