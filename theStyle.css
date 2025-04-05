@@ -1038,7 +1038,10 @@ span.price {
 
 .footerNav{
   background-color: rgb(212, 212, 212);
-  margin: 30px 0;
+  margin: 2% 2%;
+
+  display:flex;
+  justify-content: center;
 }
 
 .footerNav ul{
@@ -1050,7 +1053,7 @@ span.price {
 .footerNav ul li a{
   background-color: rgb(212, 212, 212);
   color: rgb(0, 0, 0);
-  margin: 20px;
+  margin: 1%;
   text-decoration: none;
   font-size: 1.3em;
   opacity: 0.7;
@@ -1452,11 +1455,9 @@ span.price {
 
 /* Counter Styling */
 .counter-container {
-  position: relative;
+ 
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-top: 10%;
   font-size: 20vmax;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
@@ -1466,16 +1467,16 @@ span.price {
 
 .how-it-works{
   
-  
+    
     padding-top: 1%;
-    padding-bottom: 3%;
+    padding-bottom: 14%;
     padding-left: 2%;
     background-color: rgba(0, 0, 0, 0.3);
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+   
     
 
 }

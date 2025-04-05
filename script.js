@@ -41,12 +41,12 @@ function addToCart(item, price) {
   alert(`${item} (Size: ${selectedSize}) added to cart.`);
 }
 const pages = {
-  "Apple": "apple.html",
-  "Shirts": "shirts.html",
-  "Sweaters": "sweaters.html",
-  "Caps": "caps-catalog.html",
-  "Hoodies": "hoodies.html",
-  "Sweatpants" : "sweatpants-catalog.html"
+   "Shirts": "shirts.html",
+ 
+   "Caps": "caps-catalog.html",
+   "Hoodies": "hoodies.html",
+  "pants, bottoms" : "sweatpants-catalog.html"
+  
 };
 
 function openSearch() {
