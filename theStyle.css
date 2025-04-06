@@ -42,9 +42,9 @@ header{
 .nav_links{
   list-style: none;
   font-family: "Antonio", serif;
-  font-weight: 500;
+ 
   font-style: normal;
-  font-size: 16px;
+  font-size: clamp(.5rem, .75vw, 3rem);
   color: #edf0f1;
   background-color: rgb(9, 1, 46);
   text-decoration: none;
@@ -69,12 +69,17 @@ header{
 
 .cta img{
   background-color:  rgb(9, 1, 46);
+  width: 100%;
+  height: auto;
+  max-width: clamp(2rem, 2vw, 3rem);
+  
 }
 .cta{
   
 
   background-color: rgb(9, 1, 46);
   border: none;
+  padding: 7px 15px;
   cursor: pointer;
   transition: all 0.3s ease 0s;
   color:  rgb(9, 1, 46);
@@ -1038,7 +1043,7 @@ span.price {
 
 .footerNav{
   background-color: rgb(212, 212, 212);
-  margin: 2% 2%;
+
 
   display:flex;
   justify-content: center;
@@ -1053,7 +1058,7 @@ span.price {
 .footerNav ul li a{
   background-color: rgb(212, 212, 212);
   color: rgb(0, 0, 0);
-  margin: 1%;
+
   text-decoration: none;
   font-size: 1.3em;
   opacity: 0.7;
