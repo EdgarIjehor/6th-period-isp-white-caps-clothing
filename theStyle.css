@@ -1163,8 +1163,11 @@ span.price {
 }
 
 .hat-item img {
-  width: 100%;
+  display: flex;
+  justify-self: center;
+  align-self: center;
   height: auto;
+  max-width: 100%;
   border-bottom: 1px solid #ddd;
   margin-bottom: 15px;
 }

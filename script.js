@@ -42,8 +42,9 @@ function addToCart(item, price) {
 }
 const pages = {
    "Shirts": "shirts.html",
- 
+   "Tops": "shirts.html",
    "Caps": "caps-catalog.html",
+   "Overwear": "hoodiesw.html",
    "Hoodies": "hoodies.html",
   "pants, bottoms" : "sweatpants-catalog.html"
   
