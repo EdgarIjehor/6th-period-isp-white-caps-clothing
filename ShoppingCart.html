@@ -10,11 +10,13 @@
     <title>White Caps Clothing</title>
     <style>
         .cart-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            display: flex; 
+            justify-content: left;
+            align-items: flex-start; /* Align content at the top */
             width: 100%;
+            gap: 40px; /* Adds space between cart and form */
         }
+
 
         .orderForm {
             flex: 1;
@@ -22,16 +24,16 @@
         }
 
         .cart-summary {
-            display: flex;
-         
-            max-width: 50%;
-            padding: 10%;
-            border-left: 2px solid #ddd;
-            height: 100%;
-            
+            max-width: 200vh;
+            max-height: 200vh;
+            padding: 2%; /* Reduce padding */
+            border-right: 2px solid #ddd;
+        }
+        .img_logo {
+            padding-top: 5vh;
         }
 
-        .cart-summary h2{
+        .cart-summary h2 {
             font-family: 'DM Sans';
         }
 
@@ -39,8 +41,8 @@
             text-align: left;
             font-family: 'DM Sans';
             font-size: 80%;
-
         }
+
 
         .cart-item {
             display: flex;
@@ -49,8 +51,8 @@
         }
 
         .cart-item img {
-            width: 60px;
-            height: 60px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             border-radius: 8px;
             margin-right: 10px;
@@ -65,7 +67,7 @@
 </head>
 <body>
     <h1 class="slogan">
-        Elegance woven from Nature.
+        Wear the Change, Make a Difference.
     </h1>
     <header>
         <a href="Home.html" class="homebutton">
@@ -85,23 +87,9 @@
             <li><a href="ShoppingCart.html" class="cta">
                 <img src="White Caps Images/cart.png" alt="cart" height="35px" width="35px"></a>
             </li>
-            <li>
-                <button onclick="openSearch()" class="cta">
-                  <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px">
-                </button>
-              </li>
-              <div class="search-overlay" id="searchOverlay">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Search..." oninput="searchItems()">
-                    <ul class="suggestions" id="suggestions"></ul>
-                    <button class="close-btn" onclick="closeSearch()">Close</button>
-                </div> 
-              </div>
-              <li>
-                <a href="inspiration.html" class="cta">
-                  <img src="White Caps Images/whitelightbulb.png" alt="cart" height="35px" width="35px">
-                </a>
-              </li>
+            <li><a href="ShoppingCart.html" class="cta">
+                <img src="White Caps Images/Search.png" alt="Search" height="35px" width="35px"></a>
+            </li>
         </ul>
     </header>
 
@@ -133,8 +121,19 @@
 
             <!-- Cart summary to the right -->
             <div class="cart-summary">
-                <h2>Items in Cart</h2>
                 <div id="items"></div>
+            </div>
+            <div>
+                <center>
+                <h1>IMPORTANT INFO:</h1>
+                <p>---------------------------------------------------------</p>
+                <p>currently, payment is not set up, so we will  </p>
+                <p>use venmo to make transactions to pay for your  </p>
+                <p>product. You will be contacted through the number </p>
+                <p>you have provided to provide payment shortly.  </p>
+                <padding>
+                <img src="White Caps Images/WhiteCapsCircleLogo.png" class="img_logo" alt="logo">
+                </center>
             </div>
         </div>
     </div>
@@ -224,35 +223,5 @@
             displayTotalPrice();
         };
     </script>
-          
-          <footer class="footer">
-            <div class="footerContainer">
-              
-              <div class="socialIcons">
-                  <a href="https://www.instagram.com/whitecapsclothing?igsh=bHYxdnh6M3ZuZ3h4" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                  <a href="https://www.tiktok.com/@whitecapsclothing?_t=ZP-8suGQp4f4f8&_r=1" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-                  <a href="https://www.youtube.com/@whitecapsclothing" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-              </div>
-              <div class="footerNav">
-                  <ul>
-                    <li>
-                      <div class="circlelogo" >
-                      
-                       <img src="White Caps Images/WhiteCapsCircleLogo.png" height="100px" width="100px" align="left">
-                      </div>
-                    </li>
-                    <li><a href="WebsiteDesign.html">Home</a></li>
-                    <li><a href="NewAboutUs.html">About Us</a></li>
-                    <li><a href="">Contact Information</a></li>
-                  </ul>
-              </div>
-              
-              
-              <div class="footerBottom">
-                <p>Copyright &copy;2025; Designed by <span class="designer">Nathan Wulur and Rehan Saneesh</span> </p>
-              </div>
-            </div>
-          </footer>
-            
 </body>
 </html>
